@@ -6,7 +6,7 @@ for /r %DIR% %%i in (*.java) do (
 	set str=%%~pdi
 	set str=!str:~24!
 	set str=!str:~0,-5!
-	copy %%i .\!str!.java
+	copy %%i .\Solutions\!str!.java
 )
 git add .
 git commit -m "Auto Update@%date% %time%"
