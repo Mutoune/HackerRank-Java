@@ -11,16 +11,13 @@ public class Solution {
     // Complete the maxSubsetSum function below.
     static int maxSubsetSum(int[] arr) {
         int[] res = new int[arr.length];
-        int max = arr[0];
-        res[0] = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            res[i] = arr[i];
-            for (int j = 0; j < i - 1; j++) {
-                res[i] = Math.max(res[i], res[j] + arr[i]);
-            }
-            max = Math.max(max, res[i]);
+        res[0] = Math.max(0, arr[0]);
+        res[1] = Math.max(arr[0], arr[1]);
+        for (int i = 2; i < arr.length; i++) {
+            res[i] = Math.max(res[i - 1], res[i - 2] + arr[i]);
+            res[i] = Math.max(res[i], arr[i]);
         }
-        return max;
+        return res[arr.length - 1];
     }
 
     private static final Scanner scanner = new Scanner(System.in);
