@@ -22,10 +22,8 @@ public class Solution {
             if (target - arr[i] != 0) {
                 int j = i + 1;
                 while (j < arr.length && arr[j] != target) j++;
-                if (arr[j] == target) {
-                    swap(arr, i, j);
-                    swaps++;
-                }
+                swap(arr, i, j);
+                swaps++;
             }
             i++;
         }
