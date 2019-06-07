@@ -9,23 +9,27 @@ import java.util.regex.*;
 public class Solution {
 
     // Complete the minimumSwaps function below.
+    static void swap(int[] array,int left, int right){
+        int temp = array[right];
+        array[right] = array[left];
+        array[left] = temp;
+    }
     static int minimumSwaps(int[] arr) {
-        Set<Integer> set = new HashSet<>();
-        int swap = 0;
-        for (int i = 1; i < arr.length + 1; i++) {
-            if (!set.contains(i)) {
-                for (int j = i - 1; j < arr.length; j++) {
-                    if (arr[j] == i && i - j != 1) {
-                        arr[j] = arr[i - 1];
-                        arr[i - 1] = i;
-                        set.add(i);
-                        if (arr[j] - j == 1) set.add(arr[j]);
-                        swap++;
-                    }
+        int swaps = 0;
+        int i = 0;
+        while (i < arr.length) {
+            int target = i + 1;
+            if (target - arr[i] != 0) {
+                int j = i + 1;
+                while (j < arr.length && arr[j] != target) j++;
+                if (arr[j] == target) {
+                    swap(arr, i, j);
+                    swaps++;
                 }
             }
+            i++;
         }
-        return swap;
+        return swaps;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
