@@ -10,6 +10,8 @@ public class Solution {
 
     // Complete the checkMagazine function below.
     static void checkMagazine(String[] magazine, String[] note) {
+//        Map<String, Long> magWords = Arrays.stream(magazine)
+//                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         Map<String, Integer> map = new HashMap<>();
         for (String str : magazine) {
             if (map.containsKey(str)) {
